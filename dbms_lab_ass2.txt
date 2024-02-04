@@ -1,0 +1,77 @@
+-- create table emp 
+create table emp1(
+	id int,
+    name varchar(20),
+    basic decimal(6,2),
+    designation varchar(12),
+    age int(3)
+);
+
+
+
+-- Change the data type of the field Basic from double to integer with required size of the
+-- EMP1 table
+alter table emp1 modify column basic int(8); 
+select * from emp1;
+
+
+
+-- Change the field size of Name column of the EMP1 table from 20 to 15.  
+alter table emp1 modify column name varchar(15);
+
+--insert values in emp1;
+insert into emp1 values(1,'Rohit', 6700, 'Manager', 24);
+insert into emp1 values(2, 'Sunil', 6200, 'Engineer', 27);
+insert into emp1 values(3, 'Payal', 6300, 'Engineer', 25);
+insert into emp1 values(4, 'Kunal', 6700, 'Trainee', 28);
+insert into emp1 values(5, 'Sunita', 6230, 'Trainee', 26);
+insert into emp1 values(6, 'Bimal', 7000, 'Trainee', 25);
+
+-- Insert all rows with the designation ‘trainee’ from the EMP1 table to EMP_trainee table.
+insert into emp_trainee values(4, 'Kunal', 6700, 'Trainee', 28);
+insert into emp_trainee values(5, 'Sunita', 6230, 'Trainee', 26);
+insert into emp_trainee values(6, 'Bimal', 7000, 'Trainee', 25);
+ 
+-- Display the structure of both the tables.
+describe emp1;
+describe emp_trainee;
+
+--Add columns Skills (data type-varchar2 and size-10) and DOJ (data type-date) to the
+--EMP1 table and add data for the Skills and DOJ columns according to your own wish. 
+	update emp1 set doj='2019-02-17', skills="java" where id=1;
+	update emp1 set doj='2019-02-18', skills='python' where id=2;
+	update emp1 set doj='2019-02-19',skills='php' where id=3;
+	update emp1 set doj='2019-02-20',skills='rust' where id=4;
+	update emp1 set doj='2019-02-21',skills='c++' where id=5;
+	update emp1 set doj='2019-02-22',skills='go' where id=6;		
+
+
+-- Change the designation of all trainees in EMP_trainee table to ‘Programmer _Traiee’.
+-- Update more than one row in one query in EMP1 table
+ 	update emp_trainee set designation='Programmer _Trainee' where designation='trainee';
+
+--Rename the column Age of EMP1 table to Age_in_Years
+	alter table emp1 rename column age to age_in_years;
+
+--.Delete the details of all the trainees from the EMP1 table.
+	delete from emp1 where designation='trainee';
+
+-- Drop the Age column from the EMP_trainee table
+	alter table emp_trainee drop column age;
+
+-- Drop two columns in one query from EMP_trainee table.
+	alter table emp_trainee drop column designation, drop column basic;
+
+--Rename the table EMP to EMP_Mgr_Engr.
+	alter table emp_trainee rename to emp_mgr_engr; 
+
+-- Drop the table EMP_Trainee. 	
+	drop table emp_trainee;
+
+-- Truncate EMP_Mgr_Engr table.
+	truncate table emp_mgr_engr;
+
+
+
+
+
